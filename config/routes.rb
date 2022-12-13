@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # get 'postimages/show'
   devise_for :users
   resources :postimages, only: [:new, :create, :index, :show, :destroy] do
-    resources :post_comments, only: [:create]
+    resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "homes#top"
